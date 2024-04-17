@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <%= nav_bar brand: "Loja do Auri", brand_link: root_url do %>
+    <%= menu_group do %>
+      <% menu_item "Criar novo produto", new_produto_path %>
+    <% end %>
+      <%= form_tag busca_path, method: :get, class:"navbar-form navbar-right" do %>
+        <div class="form-group">
+          <%= search_field_tag :busca, params[:busca], placeholder: "Digite o produto... ", class:"form-control" %>
+          <%= button_tag "Buscar", class:"btn btn-default" %>
+        </div>
+      <% end %>
+  <% end %>
+ 
+  <head>
+    <title>Lojinha</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "turbo", type: "module" %>
+  </head>
+
+  <div class="container">
+    <body>
+      <%= yield %>
+    </body>
+  </div>
+
+</html>
